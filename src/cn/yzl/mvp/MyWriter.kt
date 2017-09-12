@@ -25,8 +25,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         mModle = modle
         baseDir = mModle?.vFile?.parent?.path ?: ""
     }
-
-    override fun run() {
+    fun generateFiles(){
         if (project == null
                 || mModle == null
                 || mModle?.vFile == null
@@ -36,11 +35,14 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         mModle?.name = mModle?.clz?.name?.replace(".java", "")
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
-        mModle?.pkg = mModle?.clz?.qualifiedName?.substringAfterLast(".")
+        mModle?.pkg = mModle?.clz?.qualifiedName?.substringBeforeLast(".")
 
         createViewInterface()
         createPresenterInterface()
         createPresenterInterfaceImp()
+    }
+    override fun run() {
+        generateFiles()
     }
 
     private fun createViewInterface() {

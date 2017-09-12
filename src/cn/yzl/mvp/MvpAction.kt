@@ -68,7 +68,8 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
 //            MessagesCenter.showErrorMessage("只支持Activity/Fragment/v4包下的Fragment", "不受支持的类型")
 //            return
 //        }
-        MyWriter(project, modle).execute()
+        MyWriter(project, modle).generateFiles()
+        modle.vFile?.parent?.refresh(true,true,null)
     }
 
 }
