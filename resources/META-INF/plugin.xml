@@ -5,13 +5,12 @@
   <vendor email="zeliangyi@gmail.com" url="https://github.com/yizeliang">yizeliang</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    MVP 插件
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    1.0 初始化项目<br/>
+    1.0 初始化项目
     ]]>
   </change-notes>
 

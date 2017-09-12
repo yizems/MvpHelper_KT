@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MvpHelper_KT:jar">
+    <output-path>$PROJECT_DIR$/artifacts/</output-path>
+    <root id="archive" name="MvpHelper_KT.jar">
+      <element id="module-output" name="MvpHelper_KT" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/okio-1.13.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

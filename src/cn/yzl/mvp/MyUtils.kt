@@ -34,7 +34,7 @@ object MyUtils {
             } else if (it.qualifiedName.equals("android.app.Fragment")) {
                 return ClassTypeEnum.FRAGMENT
             } else {
-                val fileClassType = getFileClassType(targetClass);
+                val fileClassType = getFileClassType(it);
                 if (fileClassType != ClassTypeEnum.NONE) {
                     return fileClassType;
                 }

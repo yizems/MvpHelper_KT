@@ -5,7 +5,9 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFile
 import okio.Okio
 import java.io.File
+import java.io.InputStream
 import java.nio.charset.Charset
+
 /**
  * Created by YZL on 2017/9/11.
  */
@@ -14,7 +16,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
     var mModle: Modle? = null
     var baseDir: String = "";
     //获取的时候只能获取当前目录下的,如果跨目录进行查询,会返回空指针
-    val templateDirPath = this.javaClass.getResource("").file + "/template";
+    val templateDirPath = "template";
 
     constructor() : this(null!!, null!!) {
 
@@ -25,7 +27,8 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         mModle = modle
         baseDir = mModle?.vFile?.parent?.path ?: ""
     }
-    fun generateFiles(){
+
+    fun generateFiles() {
         if (project == null
                 || mModle == null
                 || mModle?.vFile == null
@@ -41,6 +44,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         createPresenterInterface()
         createPresenterInterfaceImp()
     }
+
     override fun run() {
         generateFiles()
     }
@@ -52,13 +56,13 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         if (viewFile.exists()) {
             println(mModle?.name + "View.java" + " 已经存在")
             return
-        }else{
+        } else {
             viewFile.createNewFile()
         }
         val path = templateDirPath + "/ViewTemp.txt"
-        val vTem = File(path)
+        val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
-        val bufferSource = Okio.buffer(Okio.source(vTem))
+        val bufferSource = Okio.buffer(Okio.source(ins))
 
         val bufferSink = Okio.buffer(Okio.sink(viewFile))
 
@@ -72,6 +76,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         bufferSink.flush()
         bufferSink.close()
         bufferSource.close()
+        ins.close()
     }
 
     private fun createPresenterInterface() {
@@ -82,13 +87,13 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         if (pFile.exists()) {
             println(mModle?.name + "Presenter.java" + " 已经存在")
             return
-        }else{
+        } else {
             pFile.createNewFile()
         }
         val path = templateDirPath + "/PresenterTemp.txt"
-        val vTem = File(path)
+        val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
-        val bufferSource = Okio.buffer(Okio.source(vTem))
+        val bufferSource = Okio.buffer(Okio.source(ins))
 
         val bufferSink = Okio.buffer(Okio.sink(pFile))
 
@@ -102,6 +107,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         bufferSink.flush()
         bufferSink.close()
         bufferSource.close()
+        ins.close()
     }
 
     private fun createPresenterInterfaceImp() {
@@ -112,13 +118,14 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         if (pFile.exists()) {
             println(mModle?.name + "PresenterImp" + " 已经存在")
             return
-        }else{
+        } else {
             pFile.createNewFile()
         }
         val path = templateDirPath + "/PresenterImpTemp.txt"
-        val vTem = File(path)
 
-        val bufferSource = Okio.buffer(Okio.source(vTem))
+        val ins: InputStream = this.javaClass.getResourceAsStream(path)
+
+        val bufferSource = Okio.buffer(Okio.source(ins))
 
         val bufferSink = Okio.buffer(Okio.sink(pFile))
 
@@ -133,6 +140,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         bufferSink.flush()
         bufferSink.close()
         bufferSource.close()
+        ins.close()
     }
 
     private fun createrDir(path: String): File {
