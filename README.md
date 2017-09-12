@@ -2,7 +2,7 @@
 
 ### 1 说明
 
-目前未完成,还差modle层的处理
+本项目没有对modle层处理,我这里采用Manager处理,HttpManager,UserManager,DbManager等等
 
 本项目只是学习使用,根据我现在的项目,进行简单的编写,不能准备上传市场,也不准备继续维护,可能会根据我的项目做一些改动,有兴趣的可以研究研究,其实主要是想练习一下kotlin
 
@@ -12,6 +12,16 @@
 ### 2 使用
 
 ![Alt+Insert][1]
+
+**Base配置方法**
+目前仅支持3个属性
+
+- 根目录下 添加 mvp_helper_kt.properties文件,可参照本项目中的文件
+- base_view_pkg BaseView包路径(cn.yzl.base.BaseView)
+- base_presenter_pkg BasePresenter包路径(cn.yzl.base.BasePresenter包)
+- base_presenter_imp_pkg BasePresenterImp包路径(cn.yzl.BasePresenterImp)
+
+
 
 ### 3 一点想法
 
