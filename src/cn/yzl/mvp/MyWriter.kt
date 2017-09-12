@@ -7,6 +7,7 @@ import okio.Okio
 import java.io.File
 import java.io.InputStream
 import java.nio.charset.Charset
+import java.util.*
 
 /**
  * Created by YZL on 2017/9/11.
@@ -17,6 +18,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
     var baseDir: String = "";
     //获取的时候只能获取当前目录下的,如果跨目录进行查询,会返回空指针
     val templateDirPath = "template";
+    var basePck: ArrayList<String>? = null;
 
     constructor() : this(null!!, null!!) {
 
@@ -26,15 +28,26 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         mProject = project
         mModle = modle
         baseDir = mModle?.vFile?.parent?.path ?: ""
+        if (project != null) basePck = MyUtils.getProperties(project)
     }
 
     fun generateFiles() {
+
         if (project == null
                 || mModle == null
                 || mModle?.vFile == null
                 || baseDir.length <= 0) {
             return
         }
+//        var flag = false;
+//        basePck?.forEach {
+//            if (it.isEmpty()) flag = true
+//        }
+//        if (flag || basePck?.size==0) {
+//            MessagesCenter.showErrorMessage("mvp_helper_kt.properties没有配置或者属性缺少", "错误信息")
+//            return
+//        }
+
         mModle?.name = mModle?.clz?.name?.replace(".java", "")
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
@@ -59,7 +72,13 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         } else {
             viewFile.createNewFile()
         }
-        val path = templateDirPath + "/ViewTemp.txt"
+        var path = templateDirPath
+        if (basePck?.size!! >= 2
+                && !basePck?.get(2).isNullOrEmpty()) {
+            path += "/ViewTemp.txt"
+        } else {
+            path += "/ViewTempNoBase.txt"
+        }
         val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
         val bufferSource = Okio.buffer(Okio.source(ins))
@@ -70,8 +89,8 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
 
         content = content.replace("#name", mModle?.name!!, false);
         content = content.replace("#pkg", mModle?.pkg!! + ".view", false);
-        content = content.replace("#base_view_pkg", "cn.yzl.app.mvp.base.BaseView", false);
-        content = content.replace("#base_view_name", "BaseView", false);
+        content = content.replace("#base_view_pkg", basePck?.get(2)!!, false);
+        content = content.replace("#base_view_name", basePck?.get(2)?.substringAfterLast(".")!!, false);
         bufferSink.writeUtf8(content)
         bufferSink.flush()
         bufferSink.close()
@@ -90,7 +109,13 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         } else {
             pFile.createNewFile()
         }
-        val path = templateDirPath + "/PresenterTemp.txt"
+        var path = templateDirPath
+        if (basePck?.size!! >= 0
+                && !basePck?.get(0).isNullOrEmpty()) {
+            path += "/PresenterTemp.txt"
+        } else {
+            path += "/PresenterTempNoBase.txt"
+        }
         val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
         val bufferSource = Okio.buffer(Okio.source(ins))
@@ -101,8 +126,8 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
 
         content = content.replace("#name", mModle?.name!!, false);
         content = content.replace("#pkg", mModle?.pkg!! + ".presenter", false);
-        content = content.replace("#base_presenter_pkg", "cn.yzl.app.mvp.base.BasePresenter", false);
-        content = content.replace("#base_presenter_name", "BasePresenter", false);
+        content = content.replace("#base_presenter_pkg", basePck?.get(0) ?: "", false);
+        content = content.replace("#base_presenter_name", basePck?.get(0)?.substringAfterLast(".") ?: "", false);
         bufferSink.writeUtf8(content)
         bufferSink.flush()
         bufferSink.close()
@@ -121,7 +146,14 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         } else {
             pFile.createNewFile()
         }
-        val path = templateDirPath + "/PresenterImpTemp.txt"
+
+        var path = templateDirPath
+        if (basePck?.size!! >= 1
+                && !basePck?.get(1).isNullOrEmpty()) {
+            path += "/PresenterImpTemp.txt"
+        } else {
+            path += "/PresenterImpTempNoBase.txt"
+        }
 
         val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
@@ -134,8 +166,8 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         content = content.replace("#name", mModle?.name!!, false);
         content = content.replace("#pkg", "${mModle?.pkg!!}.presenter", false);
         content = content.replace("#view_pkg", "${mModle?.pkg!!}.view.${mModle?.name!!}View", false);
-        content = content.replace("#base_presenter_imp_pkg", "cn.yzl.app.mvp.base.BasePresenterImp", false);
-        content = content.replace("#base_presenter_imp_name", "BasePresenterImp", false);
+        content = content.replace("#base_presenter_imp_pkg", basePck?.get(1) ?: "", false);
+        content = content.replace("#base_presenter_imp_name", basePck?.get(1)?.substringAfterLast(".") ?: "", false);
         bufferSink.writeUtf8(content)
         bufferSink.flush()
         bufferSink.close()

@@ -1,13 +1,15 @@
 package cn.yzl.mvp
 
-import com.intellij.psi.PsiClass
-import com.intellij.psi.PsiType
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.actionSystem.DataKeys
 import com.intellij.openapi.editor.Editor
+import com.intellij.openapi.project.Project
+import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiTreeUtil
+import java.io.File
+import java.io.FileInputStream
+import java.util.*
 
 
 /**
@@ -57,6 +59,7 @@ object MyUtils {
         val path = currentFile!!.path.replace(classFullName, "")
         return path
     }
+
     /**
      * @param psiFile
      * @param editor
@@ -69,5 +72,22 @@ object MyUtils {
         val offset = editor.caretModel.offset
         val element = psiFile.findElementAt(offset)
         return PsiTreeUtil.getParentOfType(element, PsiClass::class.java)
+    }
+
+    fun getProperties(project: Project?): ArrayList<String> {
+        var result: ArrayList<String> = ArrayList<String>()
+        val proPath = project?.baseDir?.path  + "/mvp_helper_kt.properties";
+        val pro = Properties()
+        if(!File(proPath).exists()){
+            result.add("")
+            result.add("")
+            result.add("")
+            return result
+        }
+        pro.load(FileInputStream(proPath))
+        result.add(pro?.getProperty("base_presenter_pkg"))
+        result.add(pro?.getProperty("base_presenter_imp_pkg"))
+        result.add(pro?.getProperty("base_view_pkg"))
+        return result
     }
 }

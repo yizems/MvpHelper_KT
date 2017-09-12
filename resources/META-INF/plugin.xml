@@ -9,7 +9,7 @@
     ]]></description>
 
   <change-notes><![CDATA[
-    1.0 初始化项目<br/>
+    1.1 加入BaseView和BasePresenter配置方法<br/>
     1.0 初始化项目
     ]]>
   </change-notes>

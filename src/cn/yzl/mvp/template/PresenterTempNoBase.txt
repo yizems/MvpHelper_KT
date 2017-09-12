@@ -1,0 +1,7 @@
+package #pkg;
+
+/**
+ * generate by MVPHelper
+ */
+public interface #namePresenter {
+}
