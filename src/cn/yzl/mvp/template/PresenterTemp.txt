@@ -1,0 +1,9 @@
+package #pkg;
+
+import #base_presenter_pkg;
+
+/**
+ * generate by MVPHelper
+ */
+public interface #namePresenter extends #base_presenter_name{
+}

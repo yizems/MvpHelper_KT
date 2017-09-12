@@ -1,0 +1,9 @@
+package #pkg;
+
+import #base_view_pkg;
+
+/**
+ * generate by MVPHelper
+ */
+public interface #nameView extends #base_view_name{
+}
