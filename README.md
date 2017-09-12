@@ -25,4 +25,4 @@
 - https://github.com/langxuelang/MvpCodeCreator
 
 
-  [1]: http://github.com/yizeliang/MvpHelper_KT/raw/master/screenshots/1.png
+  [1]: https://github.com/yizeliang/MvpHelper_KT/blob/master/screenshots/1.gif
