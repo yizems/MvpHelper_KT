@@ -51,7 +51,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         mModle?.name = mModle?.psiFile?.name?.replace(".kt", "")
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
-        mModle?.pkg = mModle?.psiFile?.containingDirectory.toString()?.substringAfter("src")
+        mModle?.pkg = mModle?.psiFile?.containingDirectory.toString()?.substringAfter("java")
                 ?.replace("\\",".")
                 .replaceFirst(".","")
         println(mModle?.name)

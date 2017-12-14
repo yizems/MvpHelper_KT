@@ -6,6 +6,8 @@
 - 取消persenter 抽象类,直接写成imp格式
 - 生成kotlin编写的 presenter和view类
 
+- 只适用于标准Android Studio项目结构
+
 ### 2 使用
 
 ![Alt+Insert][1]
