@@ -1,4 +1,4 @@
-package cn.yzl.mvp
+package cn.yzl.mvp.`for`.kotlin
 
 import com.intellij.codeInsight.CodeInsightActionHandler
 import com.intellij.codeInsight.generation.actions.BaseGenerateAction

@@ -5,6 +5,6 @@ import #view_pkg;
 /**
  * generate by MVPHelper
  */
-class #namePresenterImp(var mView : #nameView?){
+class #namePresenter(var mView : #nameView?){
 
 }

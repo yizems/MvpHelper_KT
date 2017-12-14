@@ -6,6 +6,6 @@ import #view_pkg;
 /**
  * generate by MVPHelper
  */
-class #namePresenterImp(view : #nameView?) : #base_presenter_imp_name<#nameView>(view) {
+class #namePresenter(view : #nameView?) : #base_presenter_imp_name<#nameView>(view) {
 
 }

@@ -1,4 +1,4 @@
-package cn.yzl.mvp
+package cn.yzl.mvp.`for`.kotlin
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.DataKeys
