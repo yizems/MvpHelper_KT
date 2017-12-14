@@ -44,6 +44,4 @@ class Modle {
     var psiFile: PsiFile? = null
 
     var vFile: VirtualFile? = null
-
-    var clz: PsiClass? = null
 }

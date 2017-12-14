@@ -35,7 +35,7 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
      * 校验是否为java文件和kotlin文件
      */
     override fun isValidForFile(project: Project, editor: Editor, file: PsiFile): Boolean {
-        return file.name.endsWith(".java")// || file.name.endsWith(".kt")
+        return file.name.endsWith(".kt")// || file.name.endsWith(".kt")
     }
 
     /**
@@ -55,13 +55,13 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
     override fun actionPerformedImpl(project: Project, editor: Editor?) {
         var modle = Modle()
         modle.psiFile = event?.getData(PlatformDataKeys.PSI_FILE);
+        println(modle.psiFile?.containingDirectory)
+        println(modle.psiFile?.name)
         modle.vFile = DataKeys.VIRTUAL_FILE.getData(event?.dataContext!!)
         modle.path = MyUtils.getCurrentPath(event!!, modle.psiFile?.name!!);
-        modle.clz = MyUtils.getPsiClassFromContext(modle.psiFile, editor);
-        modle.type = MyUtils.getFileClassType(modle.clz);
 
         if (!(isValidForFile(project, editor!!, modle.psiFile!!))) {
-            MessagesCenter.showErrorMessage("只支持Java文件", "不受支持的文件类型")
+            MessagesCenter.showErrorMessage("只支持Kotlin文件", "不受支持的文件类型")
             return;
         }
 //        if (modle.type == ClassTypeEnum.NONE) {

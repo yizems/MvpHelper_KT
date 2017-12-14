@@ -2,12 +2,9 @@
 
 ### 1 说明
 
-本项目没有对modle层处理,我这里采用Manager处理,HttpManager,UserManager,DbManager等等
-
-本项目只是学习使用,根据我现在的项目,进行简单的编写,不能准备上传市场,也不准备继续维护,可能会根据我的项目做一些改动,有兴趣的可以研究研究,其实主要是想练习一下kotlin
-
-- kotlin编写
-- okio作为文件操作
+该分支为 为kotlin项目做的分支插件分支
+- 取消persenter 抽象类,直接写成imp格式
+- 生成kotlin编写的 presenter和view类
 
 ### 2 使用
 

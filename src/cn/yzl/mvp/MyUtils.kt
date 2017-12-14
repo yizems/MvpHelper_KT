@@ -60,6 +60,21 @@ object MyUtils {
         return path
     }
 
+
+//    private fun getPsiClassFromEvent(e: AnActionEvent): KtClass? {
+//        val editor = e.getData(PlatformDataKeys.EDITOR) ?: return null
+//
+//        val project = editor.project ?: return null
+//
+//        val psiFile = e.getData(LangDataKeys.PSI_FILE)
+//        if (psiFile == null || psiFile.language !== KotlinLanguage.INSTANCE) return null
+//
+//        val location = Location.fromEditor(editor, project)
+//        val psiElement = psiFile.findElementAt(location.getStartOffset()) ?: return null
+//
+//        return KtClassHelper.getKtClassForElement(psiElement)
+//    }
+
     /**
      * @param psiFile
      * @param editor

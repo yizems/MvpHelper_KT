@@ -48,13 +48,17 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
 //            return
 //        }
 
-        mModle?.name = mModle?.clz?.name?.replace(".java", "")
+        mModle?.name = mModle?.psiFile?.name?.replace(".kt", "")
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
-        mModle?.pkg = mModle?.clz?.qualifiedName?.substringBeforeLast(".")
+        mModle?.pkg = mModle?.psiFile?.containingDirectory.toString()?.substringAfter("src")
+                ?.replace("\\",".")
+                .replaceFirst(".","")
+        println(mModle?.name)
+        println(mModle?.pkg)
 
         createViewInterface()
-        createPresenterInterface()
+//        createPresenterInterface()
         createPresenterInterfaceImp()
     }
 
@@ -64,10 +68,10 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
 
     private fun createViewInterface() {
         val dir = createrDir(baseDir + "/view")
-        val viewFile = File(dir, mModle?.name + "View.java")
+        val viewFile = File(dir, mModle?.name + "View.kt")
 
         if (viewFile.exists()) {
-            println(mModle?.name + "View.java" + " 已经存在")
+            println(mModle?.name + "View.kt" + " 已经存在")
             return
         } else {
             viewFile.createNewFile()
@@ -98,50 +102,13 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         ins.close()
     }
 
-    private fun createPresenterInterface() {
-        val dir = createrDir(baseDir + "/presenter")
-
-        val pFile = File(dir, mModle?.name + "Presenter.java")
-
-        if (pFile.exists()) {
-            println(mModle?.name + "Presenter.java" + " 已经存在")
-            return
-        } else {
-            pFile.createNewFile()
-        }
-        var path = templateDirPath
-        if (basePck?.size!! >= 0
-                && !basePck?.get(0).isNullOrEmpty()) {
-            path += "/PresenterTemp.txt"
-        } else {
-            path += "/PresenterTempNoBase.txt"
-        }
-        val ins: InputStream = this.javaClass.getResourceAsStream(path)
-
-        val bufferSource = Okio.buffer(Okio.source(ins))
-
-        val bufferSink = Okio.buffer(Okio.sink(pFile))
-
-        var content = bufferSource.readString(Charset.forName("UTF-8"))
-
-        content = content.replace("#name", mModle?.name!!, false);
-        content = content.replace("#pkg", mModle?.pkg!! + ".presenter", false);
-        content = content.replace("#base_presenter_pkg", basePck?.get(0) ?: "", false);
-        content = content.replace("#base_presenter_name", basePck?.get(0)?.substringAfterLast(".") ?: "", false);
-        bufferSink.writeUtf8(content)
-        bufferSink.flush()
-        bufferSink.close()
-        bufferSource.close()
-        ins.close()
-    }
-
     private fun createPresenterInterfaceImp() {
         val dir = createrDir(baseDir + "/presenter")
 
-        val pFile = File(dir, mModle?.name + "PresenterImp.java")
+        val pFile = File(dir, mModle?.name + "Presenter.kt")
 
         if (pFile.exists()) {
-            println(mModle?.name + "PresenterImp" + " 已经存在")
+            println(mModle?.name + "Presenter" + " 已经存在")
             return
         } else {
             pFile.createNewFile()
@@ -150,9 +117,9 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         var path = templateDirPath
         if (basePck?.size!! >= 1
                 && !basePck?.get(1).isNullOrEmpty()) {
-            path += "/PresenterImpTemp.txt"
+            path += "/PresenterTemp.txt"
         } else {
-            path += "/PresenterImpTempNoBase.txt"
+            path += "/PresenterTempNoBase.txt"
         }
 
         val ins: InputStream = this.javaClass.getResourceAsStream(path)
