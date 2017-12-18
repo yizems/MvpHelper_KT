@@ -8,11 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c2d1bdb4-6152-4dfd-984f-23fb36ade133" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/artifacts/MvpHelper(kotlin).jar" afterPath="" />
       <change beforePath="$PROJECT_DIR$/out/production/MvpHelper_KT/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/out/production/MvpHelper_KT/META-INF/plugin.xml" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/Modle.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/Modle.kt" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MvpAction.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MvpAction.kt" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyUtils.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyUtils.kt" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyWriter.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyWriter.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -147,6 +144,11 @@
             <path>
               <item name="MvpHelper_KT" type="b2602c69:ProjectViewProjectNode" />
               <item name="MvpHelper_KT" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MvpHelper_KT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MvpHelper_KT" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MvpHelper_KT" type="b2602c69:ProjectViewProjectNode" />
@@ -610,7 +612,7 @@
       <workItem from="1513243748396" duration="71000" />
       <workItem from="1513244187727" duration="454000" />
       <workItem from="1513583678651" duration="1686000" />
-      <workItem from="1513590663487" duration="1518000" />
+      <workItem from="1513590663487" duration="1562000" />
     </task>
     <task id="LOCAL-00001" summary="add kotlin-plugin.jar">
       <created>1513583877738</created>
@@ -619,11 +621,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513583877738</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="release">
+      <created>1513592198730</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1513592198730</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6849000" />
+    <option name="totallyTimeSpent" value="6893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
@@ -669,7 +678,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="add kotlin-plugin.jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add kotlin-plugin.jar" />
+    <MESSAGE value="release" />
+    <option name="LAST_COMMIT_MESSAGE" value="release" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
