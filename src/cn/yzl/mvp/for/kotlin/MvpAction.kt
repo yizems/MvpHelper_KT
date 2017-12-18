@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiFile
+import org.jetbrains.kotlin.psi.KtClass
 
 
 /**
@@ -59,7 +60,10 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
         println(modle.psiFile?.name)
         modle.vFile = DataKeys.VIRTUAL_FILE.getData(event?.dataContext!!)
         modle.path = MyUtils.getCurrentPath(event!!, modle.psiFile?.name!!);
-
+        modle.ktClass = MyUtils.getPsiClassFromEvent(editor);
+        if (modle.ktClass == null) {
+            return
+        }
         if (!(isValidForFile(project, editor!!, modle.psiFile!!))) {
             MessagesCenter.showErrorMessage("只支持Kotlin文件", "不受支持的文件类型")
             return;
@@ -69,7 +73,7 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
 //            return
 //        }
         MyWriter(project, modle).generateFiles()
-        modle.vFile?.parent?.refresh(true,true,null)
+        modle.vFile?.parent?.refresh(true, true, null)
     }
 
 }

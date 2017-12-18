@@ -3,6 +3,7 @@ package cn.yzl.mvp.`for`.kotlin
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiFile
+import org.jetbrains.kotlin.psi.KtClass
 
 /**
  * Created by YZL on 2017/9/11.
@@ -44,4 +45,6 @@ class Modle {
     var psiFile: PsiFile? = null
 
     var vFile: VirtualFile? = null
+
+    var ktClass: KtClass? = null
 }

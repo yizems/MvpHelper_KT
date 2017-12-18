@@ -47,18 +47,11 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
 //            MessagesCenter.showErrorMessage("mvp_helper_kt.properties没有配置或者属性缺少", "错误信息")
 //            return
 //        }
-
-        mModle?.name = mModle?.psiFile?.name?.replace(".kt", "")
+        mModle?.name = mModle?.ktClass?.name?.replace(".kt", "")
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
-        mModle?.pkg = mModle?.psiFile?.containingDirectory.toString()?.substringAfter("java")
-                ?.replace("\\",".")
-                .replaceFirst(".","")
-        println(mModle?.name)
-        println(mModle?.pkg)
-
+        mModle?.pkg = mModle?.ktClass?.fqName.toString().substringBeforeLast(".")
         createViewInterface()
-//        createPresenterInterface()
         createPresenterInterfaceImp()
     }
 
