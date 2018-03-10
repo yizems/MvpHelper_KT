@@ -9,7 +9,6 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiFile
-import org.jetbrains.kotlin.psi.KtClass
 
 
 /**
@@ -33,7 +32,7 @@ class MvpAction(handler: CodeInsightActionHandler?) : BaseGenerateAction(handler
     }
 
     /**
-     * 校验是否为java文件和kotlin文件
+     * 校验是否为kotlin文件
      */
     override fun isValidForFile(project: Project, editor: Editor, file: PsiFile): Boolean {
         return file.name.endsWith(".kt")// || file.name.endsWith(".kt")

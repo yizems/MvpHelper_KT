@@ -36,7 +36,7 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
         if (project == null
                 || mModle == null
                 || mModle?.vFile == null
-                || baseDir.length <= 0) {
+                || baseDir.isEmpty()) {
             return
         }
 //        var flag = false;
@@ -51,89 +51,94 @@ class MyWriter(project: Project?, modle: Modle?, vararg files: PsiFile?) : Write
                 ?.replace("Activity", "")
                 ?.replace("Fragment", "")
         mModle?.pkg = mModle?.ktClass?.fqName.toString().substringBeforeLast(".")
-        createViewInterface()
-        createPresenterInterfaceImp()
+
+        createMvpFile()
     }
 
     override fun run() {
         generateFiles()
     }
 
-    private fun createViewInterface() {
-        val dir = createrDir(baseDir + "/view")
-        val viewFile = File(dir, mModle?.name + "View.kt")
+    private fun createMvpFile() {
+        val dir = createrDir(baseDir + "/mvp")
+        val mvpFile = File(dir, mModle?.name + "Contract.kt")
 
-        if (viewFile.exists()) {
-            println(mModle?.name + "View.kt" + " 已经存在")
+        if (mvpFile.exists()) {
+            println(mModle?.name + "Contract.kt" + " 已经存在")
             return
         } else {
-            viewFile.createNewFile()
+            mvpFile.createNewFile()
         }
+
+
         var path = templateDirPath
         if (basePck?.size!! >= 2
                 && !basePck?.get(2).isNullOrEmpty()) {
-            path += "/ViewTemp.txt"
+            path += "/MVPContract.txt"
         } else {
-            path += "/ViewTempNoBase.txt"
+            path += "/MVPNoBaseContract.txt"
         }
         val ins: InputStream = this.javaClass.getResourceAsStream(path)
 
         val bufferSource = Okio.buffer(Okio.source(ins))
 
-        val bufferSink = Okio.buffer(Okio.sink(viewFile))
+        val bufferSink = Okio.buffer(Okio.sink(mvpFile))
 
         var content = bufferSource.readString(Charset.forName("UTF-8"))
 
         content = content.replace("#name", mModle?.name!!, false);
-        content = content.replace("#pkg", mModle?.pkg!! + ".view", false);
+        content = content.replace("#pkg", mModle?.pkg!! + ".mvp", false);
         content = content.replace("#base_view_pkg", basePck?.get(2)!!, false);
         content = content.replace("#base_view_name", basePck?.get(2)?.substringAfterLast(".")!!, false);
-        bufferSink.writeUtf8(content)
-        bufferSink.flush()
-        bufferSink.close()
-        bufferSource.close()
-        ins.close()
-    }
-
-    private fun createPresenterInterfaceImp() {
-        val dir = createrDir(baseDir + "/presenter")
-
-        val pFile = File(dir, mModle?.name + "Presenter.kt")
-
-        if (pFile.exists()) {
-            println(mModle?.name + "Presenter" + " 已经存在")
-            return
-        } else {
-            pFile.createNewFile()
-        }
-
-        var path = templateDirPath
-        if (basePck?.size!! >= 1
-                && !basePck?.get(1).isNullOrEmpty()) {
-            path += "/PresenterTemp.txt"
-        } else {
-            path += "/PresenterTempNoBase.txt"
-        }
-
-        val ins: InputStream = this.javaClass.getResourceAsStream(path)
-
-        val bufferSource = Okio.buffer(Okio.source(ins))
-
-        val bufferSink = Okio.buffer(Okio.sink(pFile))
-
-        var content = bufferSource.readString(Charset.forName("UTF-8"))
-
-        content = content.replace("#name", mModle?.name!!, false);
-        content = content.replace("#pkg", "${mModle?.pkg!!}.presenter", false);
-        content = content.replace("#view_pkg", "${mModle?.pkg!!}.view.${mModle?.name!!}View", false);
         content = content.replace("#base_presenter_imp_pkg", basePck?.get(1) ?: "", false);
         content = content.replace("#base_presenter_imp_name", basePck?.get(1)?.substringAfterLast(".") ?: "", false);
+
         bufferSink.writeUtf8(content)
         bufferSink.flush()
         bufferSink.close()
         bufferSource.close()
         ins.close()
     }
+
+//    private fun createPresenterInterfaceImp() {
+//        val dir = createrDir(baseDir + "/presenter")
+//
+//        val pFile = File(dir, mModle?.name + "Presenter.kt")
+//
+//        if (pFile.exists()) {
+//            println(mModle?.name + "Presenter" + " 已经存在")
+//            return
+//        } else {
+//            pFile.createNewFile()
+//        }
+//
+//        var path = templateDirPath
+//        if (basePck?.size!! >= 1
+//                && !basePck?.get(1).isNullOrEmpty()) {
+//            path += "/PresenterTemp.txt"
+//        } else {
+//            path += "/PresenterTempNoBase.txt"
+//        }
+//
+//        val ins: InputStream = this.javaClass.getResourceAsStream(path)
+//
+//        val bufferSource = Okio.buffer(Okio.source(ins))
+//
+//        val bufferSink = Okio.buffer(Okio.sink(pFile))
+//
+//        var content = bufferSource.readString(Charset.forName("UTF-8"))
+//
+//        content = content.replace("#name", mModle?.name!!, false);
+//        content = content.replace("#pkg", "${mModle?.pkg!!}.presenter", false);
+//        content = content.replace("#view_pkg", "${mModle?.pkg!!}.view.${mModle?.name!!}View", false);
+//        content = content.replace("#base_presenter_imp_pkg", basePck?.get(1) ?: "", false);
+//        content = content.replace("#base_presenter_imp_name", basePck?.get(1)?.substringAfterLast(".") ?: "", false);
+//        bufferSink.writeUtf8(content)
+//        bufferSink.flush()
+//        bufferSink.close()
+//        bufferSource.close()
+//        ins.close()
+//    }
 
     private fun createrDir(path: String): File {
         val file = File(path);

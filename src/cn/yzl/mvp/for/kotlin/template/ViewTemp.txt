@@ -1,9 +1,0 @@
-package #pkg;
-
-import #base_view_pkg;
-
-/**
- * generate by MVPHelper
- */
-interface #nameView : #base_view_name{
-}
