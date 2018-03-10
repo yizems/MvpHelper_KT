@@ -7,18 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2d1bdb4-6152-4dfd-984f-23fb36ade133" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/MVPContract.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/MVPNoBaseContract.txt" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/MvpHelper_KT/cn/yzl/mvp/for/kotlin/template/MVPContract.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/MvpHelper_KT/cn/yzl/mvp/for/kotlin/template/MVPNoBaseContract.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/MvpHelper_KT.iml" afterPath="$PROJECT_DIR$/MvpHelper_KT.iml" />
-      <change beforePath="$PROJECT_DIR$/resources/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/resources/META-INF/plugin.xml" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MvpAction.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MvpAction.kt" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyWriter.kt" afterPath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/MyWriter.kt" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/PresenterTemp.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/PresenterTempNoBase.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/ViewTemp.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/cn/yzl/mvp/for/kotlin/template/ViewTempNoBase.txt" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -578,7 +569,7 @@
       <workItem from="1513244187727" duration="454000" />
       <workItem from="1513583678651" duration="1686000" />
       <workItem from="1513590663487" duration="1599000" />
-      <workItem from="1520643624982" duration="1588000" />
+      <workItem from="1520643624982" duration="1672000" />
     </task>
     <task id="LOCAL-00001" summary="add kotlin-plugin.jar">
       <created>1513583877738</created>
@@ -601,11 +592,25 @@
       <option name="project" value="LOCAL" />
       <updated>1513592237419</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="kt-1.2-release">
+      <created>1520645263944</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1520645263944</updated>
+    </task>
+    <task id="LOCAL-00005" summary="kt-1.2-release">
+      <created>1520645279698</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1520645279698</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8518000" />
+    <option name="totallyTimeSpent" value="8602000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
@@ -652,7 +657,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="add kotlin-plugin.jar" />
     <MESSAGE value="release" />
-    <option name="LAST_COMMIT_MESSAGE" value="release" />
+    <MESSAGE value="kt-1.2-release" />
+    <option name="LAST_COMMIT_MESSAGE" value="kt-1.2-release" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

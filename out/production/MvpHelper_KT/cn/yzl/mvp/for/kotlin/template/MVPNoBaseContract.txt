@@ -1,0 +1,11 @@
+package #pkg;
+
+/**
+ * generate by MVPHelper
+ */
+class #namePresenter(var mView : #nameView?){
+
+}
+
+interface #nameView {
+}

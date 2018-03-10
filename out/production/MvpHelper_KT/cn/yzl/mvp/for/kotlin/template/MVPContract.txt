@@ -1,0 +1,19 @@
+package #pkg;
+
+import #base_view_pkg;
+import #base_presenter_imp_pkg;
+
+/**
+ * generate by MVPHelper
+ */
+class #namePresenter(view : #nameView?) : #base_presenter_imp_name<#nameView>(view) {
+
+}
+
+
+
+
+interface #nameView : #base_view_name{
+
+}
+
