@@ -1,7 +1,7 @@
 <idea-plugin >
   <id>cn.yzl.mvp.helper.for.kotlin</id>
   <name>MvpHelper(kotlin)</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <vendor email="zeliangyi@gmail.com" url="https://github.com/yizeliang">yizeliang</vendor>
 
   <description>

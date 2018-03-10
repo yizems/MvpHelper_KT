@@ -1,6 +1,0 @@
-package #pkg;
-/**
- * generate by MVPHelper
- */
-interface #nameView {
-}
